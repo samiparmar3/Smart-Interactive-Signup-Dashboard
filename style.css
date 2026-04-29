@@ -1,0 +1,189 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: #0f172a;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ================= FORM ================= */
+
+form{
+    position: relative;
+    padding: 40px;
+    border-radius: 12px;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Rotating Neon Border */
+form::before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(
+        #00f0ff,
+        #00ff85,
+        #aaff00,
+        #fffb00,
+        #ff7b00,
+        #ff00c8,
+        #00f0ff
+        );
+        animation: spin 8s linear infinite;
+        filter: blur(10px);
+        opacity: 0.7;
+    }
+    
+    
+    form::after{
+        content: "";
+        position: absolute;
+        inset: 4px;
+        background: #0f172a;
+        border-radius: 10px;
+        z-index: 1;
+    }
+    
+    
+    form *{
+        position: relative;
+        z-index: 2;
+    }
+    
+    
+/* ================= ANIMATION ================= */
+    
+    @keyframes spin{
+        from{ transform: rotate(0deg); }
+        to{ transform: rotate(360deg); }
+    }
+/* ================= TITLE ================= */
+
+form h1{
+    margin-bottom: 10px;
+    background: linear-gradient(to right, cyan, magenta);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* ================= GLOW LINE ================= */
+
+form span{
+    display: block;
+    width: 60%;
+    height: 5px;
+    margin: 10px auto 25px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00f0ff,
+        transparent
+    );
+    background-size: 200%;
+    animation: glowLine 2s linear infinite;
+}
+
+@keyframes glowLine{
+    0%{ background-position: -200%; }
+    100%{ background-position: 200%; }
+}
+
+/* ================= INPUT ================= */
+
+.input{
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input i{
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    color: gray;
+    transition: 0.3s;
+}
+
+.input input{
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    color: white;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+
+.input input:focus{
+    border-bottom: 2px solid cyan;
+    box-shadow: 0 5px 10px rgba(0,255,255,0.3);
+}
+
+
+.input label{
+    position: absolute;
+    top: 10px;
+    left: 35px;
+    color: gray;
+    transition: 0.3s;
+}
+
+
+.input input:focus + label,
+.input input:valid + label{
+    top: -10px;
+    left: 30px;
+    font-size: 12px;
+    color: cyan;
+}
+
+
+.input input:focus ~ i{
+    color: cyan;
+}
+
+#togglePass{
+    position: absolute;
+    top: 10px;
+    left: 80%;
+}
+/* ================= BUTTON ================= */
+
+button{
+    width: 100%;
+    padding: 12px;
+    border: 2px solid cyan;
+    background: transparent;
+    color: cyan;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+button:hover{
+    background: cyan;
+    color: #0f172a;
+    box-shadow:
+        0 0 5px cyan,
+        0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan;
+}
